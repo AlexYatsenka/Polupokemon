@@ -77,6 +77,11 @@ class PokemonListFragment : Fragment() {
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        mBinding = null
+    }
+
     companion object {
         fun newInstance() = PokemonListFragment()
     }

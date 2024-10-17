@@ -21,7 +21,6 @@ import com.alexyatsenka.polupokemon.databinding.PokemonDetailFragmentBinding
 import com.alexyatsenka.polupokemon.presentation.MainActivity
 import com.alexyatsenka.polupokemon.presentation.di.Dagger
 import com.alexyatsenka.polupokemon.presentation.ui.detail.recycler.PokemonTypeAdapter
-import com.alexyatsenka.polupokemon.utils.firstUppercase
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
@@ -71,7 +70,7 @@ class PokemonDetailFragment : Fragment() {
                             ivFront.visibility = GONE
                         }
 
-                        tvName.text = item.name.firstUppercase()
+                        tvName.text = item.name.replaceFirstChar(Char::titlecase)
                         tvTypesTitle.visibility = VISIBLE
                         tvHeight.text = getString(R.string.height, item.height)
                         tvBaseExp.text = getString(R.string.base_exp, item.baseExperience)
@@ -153,6 +152,11 @@ class PokemonDetailFragment : Fragment() {
             addUpdateListener { ivFront.setAlpha(1f) }
             start()
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mBinding = null
     }
 
     companion object {

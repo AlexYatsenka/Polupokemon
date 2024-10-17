@@ -1,7 +1,6 @@
 package com.alexyatsenka.polupokemon.presentation.ui.list.recycler
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.content.res.ColorStateList
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,10 +8,7 @@ import androidx.palette.graphics.Palette
 import androidx.recyclerview.widget.RecyclerView
 import com.alexyatsenka.polupokemon.databinding.PokemonItemBinding
 import com.alexyatsenka.polupokemon.domain.models.Pokemon
-import com.alexyatsenka.polupokemon.utils.firstUppercase
 import com.bumptech.glide.Glide
-import com.bumptech.glide.ListPreloader.PreloadModelProvider
-import com.bumptech.glide.RequestBuilder
 
 
 class PokemonListViewHolder private constructor(
@@ -39,7 +35,7 @@ class PokemonListViewHolder private constructor(
 
             tvPokemonType.backgroundTintList = color
             tvPokemonType.setText(item.type.first().title)
-            tvPokemonName.text = item.name.firstUppercase()
+            tvPokemonName.text = item.name.replaceFirstChar(Char::titlecase)
 
             Palette.from(listOf(Palette.Swatch(color.defaultColor, 0)))
                 .dominantSwatch?.let { tvPokemonType.setTextColor(it.titleTextColor) }
