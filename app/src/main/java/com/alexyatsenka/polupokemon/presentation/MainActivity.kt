@@ -8,13 +8,9 @@ import androidx.core.graphics.Insets
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.commit
-import androidx.fragment.app.replace
-import androidx.lifecycle.lifecycleScope
 import com.alexyatsenka.polupokemon.R
 import com.alexyatsenka.polupokemon.presentation.di.Dagger
 import com.alexyatsenka.polupokemon.presentation.ui.list.PokemonListFragment
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
@@ -35,6 +31,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         supportFragmentManager.commit {
+            setCustomAnimations(
+                R.anim.slide_in,
+                R.anim.fade_out,
+                R.anim.fade_in,
+                R.anim.slide_out
+            )
             replace(
                 R.id.container,
                 PokemonListFragment.newInstance()

@@ -3,12 +3,8 @@ package com.alexyatsenka.polupokemon.presentation.ui.detail
 import android.animation.ValueAnimator
 import android.content.Context
 import android.content.res.ColorStateList
-import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.Color
-import android.graphics.ColorFilter
-import android.graphics.PorterDuff
-import android.graphics.PorterDuffColorFilter
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -20,10 +16,6 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.palette.graphics.Palette
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.transition.Transition
-import androidx.transition.Visibility
 import com.alexyatsenka.polupokemon.R
 import com.alexyatsenka.polupokemon.databinding.PokemonDetailFragmentBinding
 import com.alexyatsenka.polupokemon.presentation.MainActivity
@@ -31,16 +23,10 @@ import com.alexyatsenka.polupokemon.presentation.di.Dagger
 import com.alexyatsenka.polupokemon.presentation.ui.detail.recycler.PokemonTypeAdapter
 import com.alexyatsenka.polupokemon.utils.firstUppercase
 import com.bumptech.glide.Glide
-import com.bumptech.glide.TransitionOptions
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
-import com.bumptech.glide.load.resource.bitmap.BitmapTransitionOptions
-import com.bumptech.glide.load.resource.bitmap.BitmapTransitionOptions.withCrossFade
-import com.bumptech.glide.request.ExperimentalRequestListener
-import com.bumptech.glide.request.RequestFutureTarget
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
-import com.google.android.material.transition.MaterialFade
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
